@@ -67,7 +67,16 @@ def jeu(win):
 	# initialisation du jeu
 	# Le serpent se dirige vers la droite au début du jeu.
 	# C'est comme si le joueur avait utilisé la flèche droite au clavier
-	key = KEY_RIGHT
+	key = # Affichage la nouriture en vert sur fond noir dans la fenêtre
+	curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+	win.addch(food[0], food[1], chr(211), curses.color_pair(2))  # Prints the food
+
+	# Affichage du serpent en bleu sur fond jaune
+	curses.init_pair(3, curses.COLOR_BLUE, curses.COLOR_YELLOW)
+	# sur toute la longeur du serpent
+	for i in range(len(snake)):
+		# affichage de chaque anneau dans la fenêtre en ligne, colonne
+		win.addstr(snake[i][0], snake[i][1], '*', curses.color_pair(3))
 	score = 0
 
 	# Definition des coordonnées du serpent
